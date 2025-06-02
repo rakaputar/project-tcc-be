@@ -1,18 +1,20 @@
-# Gunakan image Node.js resmi
-FROM node:20
+# Dockerfile for Backend
+FROM node:14
 
 # Set working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Salin package.json dan install dependencies
+# Copy package.json and package-lock.json
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Salin semua source code ke container
+# Copy the rest of the application code
 COPY . .
 
-# Set port yang digunakan oleh aplikasi (harus cocok dengan yang digunakan di app)
-ENV PORT=8080
+# Expose the port
+EXPOSE 5000
 
-# Jalankan server
-CMD [ "node", "app.js" ]
+# Start the application
+CMD ["npm", "start"]
