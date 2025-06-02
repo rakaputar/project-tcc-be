@@ -1,0 +1,24 @@
+steps:
+  # Step 1: Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/smartphone-backend', '.']
+
+  # Step 2: Push image ke Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/smartphone-backend']
+
+  # Step 3: Deploy ke Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - smartphone-backend
+      - --image=gcr.io/$PROJECT_ID/smartphone-backend
+      - --platform=managed
+      - --region=asia-southeast2 # ganti sesuai region kamu
+      - --allow-unauthenticated
+      - --port=8080
+
+images:
+  - gcr.io/$PROJECT_ID/smartphone-backend

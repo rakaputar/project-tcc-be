@@ -1,0 +1,66 @@
+### Login user1
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "password123"
+}
+
+### Login user2
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user2",
+  "password": "password123"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "Arul",
+  "password": "123"
+}
+
+
+### Get all smartphones (gunakan accessToken dari login sebagai Authorization)
+GET http://localhost:5000/api/smartphones
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0ODc1NDI4MSwiZXhwIjoxNzQ4NzU1MTgxfQ.92LwfX_bTDjdKSg33M_gILJHtMVk2bAdoJXEdJYlEeI"}}
+
+### Get smartphone by ID (ganti ID sesuai data hasil seed, misal 1 atau 2)
+GET http://localhost:5000/api/smartphones/1
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzQ4NzY4MzI3LCJleHAiOjE3NDg3NjkyMjd9.ywHXV6AutEHO69zK9Ni8OZH04DkK802us4CDN3NSYnM"}}
+
+### Get all brands
+GET http://localhost:5000/api/brands
+Authorization: Bearer {{"eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0ODc2NDA5MSwiZXhwIjoxNzQ4NzY0OTkxfQ.6HWfUk39oUllRtHIxzlN8r7ea3N_9W7V5C6iYxLevko"}}
+
+### Get favorites
+GET http://localhost:5000/api/favorites
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0ODc2NDc4NSwiZXhwIjoxNzQ4NzY1Njg1fQ.WFS7mbxQgtocxxa6okO3WyJHrCKl3VNZdg4c2gdqvNk"}}
+
+### Add to favorites (ganti smartphoneId sesuai yang ingin difavoritkan)
+POST http://localhost:5000/api/favorites
+Content-Type: application/json
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0ODc1NDI4MSwiZXhwIjoxNzQ4NzU1MTgxfQ.92LwfX_bTDjdKSg33M_gILJHtMVk2bAdoJXEdJYlEeI"}}
+
+{
+  "smartphoneId": 2
+}
+
+### Remove from favorites
+DELETE http://localhost:5000/api/favorites/2
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0ODc1NDI4MSwiZXhwIjoxNzQ4NzU1MTgxfQ.92LwfX_bTDjdKSg33M_gILJHtMVk2bAdoJXEdJYlEeI"}}
+
+### Compare two smartphones (gunakan ID yang tersedia)
+POST http://localhost:5000/api/compare
+Content-Type: application/json
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0ODc1NDI4MSwiZXhwIjoxNzQ4NzU1MTgxfQ.92LwfX_bTDjdKSg33M_gILJHtMVk2bAdoJXEdJYlEeI"}}
+
+{
+  "id1": 1,
+  "id2": 2
+}
