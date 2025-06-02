@@ -1,3 +1,6 @@
+substitutions:
+  _ENV: gs://projek_tcc/.env
+  
 steps:
   # Ngambil data env yg disimpen di cloud storage pake gsuri
   - name: "gcr.io/cloud-builders/gsutil"
