@@ -47,6 +47,6 @@ steps:
       ]
 
 # Log hanya akan disimpan di Google Cloud Logging
-# Log tidak akan disimpan di Google Cloud Storage (butuh hak akses).
+# Log tidak akan disimpan di Google Cloud Storage (butuh hak akses).gs://projek_tcc/.env
 options:
-  logging: CLOUD_LOGGING_ONLY, gs://projek_tcc/.env
+  logging: CLOUD_LOGGING_ONLY 
